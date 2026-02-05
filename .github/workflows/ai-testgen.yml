@@ -1,0 +1,21 @@
+name: AI Test Generation
+on:
+  workflow_dispatch:
+
+jobs:
+  run-tests:
+    uses: Tejas4560/improved-testgen/.github/workflows/ai-test-pipeline-v2.yml@T1
+    permissions:
+      contents: write        # Required for pushing to branch
+      pages: write
+      id-token: write
+      pull-requests: write
+    with:
+      min_coverage: '80'
+      auto_push_tests: 'true'                    # ← ADD THIS
+      tests_branch: 'ai-generated-tests'         # ← OPTIONAL (this is default)
+    secrets:
+      AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+      AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
+      AZURE_OPENAI_DEPLOYMENT: ${{ secrets.AZURE_OPENAI_DEPLOYMENT }}
+      # GIT_PUSH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # ← Uses GITHUB_TOKEN by default
