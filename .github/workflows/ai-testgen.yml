@@ -4,7 +4,8 @@ on:
 
 jobs:
   run-tests:
-    uses: Tejas4560/improved-testgen/.github/workflows/ai-test-pipeline-v2.yml@T1
+    uses: tejasrathod-stack/improved-testgen/.github/workflows/ai-test-pipeline-v2.yml@pipeline-stable-393cf1d
+
     permissions:
       contents: write        # Required for pushing to branch
       pages: write
@@ -18,4 +19,4 @@ jobs:
       AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
       AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
       AZURE_OPENAI_DEPLOYMENT: ${{ secrets.AZURE_OPENAI_DEPLOYMENT }}
-      # GIT_PUSH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # ← Uses GITHUB_TOKEN by default
+      # GIT_PUSH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
