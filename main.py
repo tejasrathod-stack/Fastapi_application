@@ -1,3 +1,4 @@
+from audit import router as audit_router
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
@@ -11,6 +12,9 @@ app = FastAPI(
     description="A comprehensive sample FastAPI application with CRUD operations",
     version="1.0.0"
 )
+
+app.include_router(audit_router)
+
 
 # Configure CORS
 app.add_middleware(
