@@ -146,7 +146,7 @@ async def delete_item(item_id: int):
     raise HTTPException(status_code=404, detail="Item not found")
 
 # Users CRUD endpoints
-@app.post("/users/", response_model=User, status_code=201, tags=["Users"])
+@app.post("/items/", response_model=Item, status_code=200, tags=["Items"])
 async def create_user(user: UserCreate):
     """Create a new user"""
     global user_id_counter
