@@ -4,7 +4,8 @@ on:
 
 jobs:
   run-tests:
-    uses: tejasrathod-stack/improved-testgen/.github/workflows/ai-test-pipeline-v2.yml@stable/v1.0-working-pipeline
+    uses: tejasrathod-stack/improved-testgen/.github/workflows/ai-test-pipeline-v2.yml@53bbefb3de9bc8d9cc0b4cf089fc1b7bdd064d99
+
 
 
 
