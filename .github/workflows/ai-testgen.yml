@@ -4,7 +4,8 @@ on:
 
 jobs:
   run-tests:
-    uses: tejasrathod-stack/improved-testgen/.github/workflows/ai-test-pipeline-v2.yml@main
+    uses: tejasrathod-stack/improved-testgen/.github/workflows/ai-test-pipeline-v2.yml@bugfix/stable-v1.0-fixes
+
 
 
 
@@ -18,6 +19,8 @@ jobs:
       min_coverage: '80'
       auto_push_tests: 'true'                    # ← ADD THIS
       tests_branch: 'ai-generated-tests'         # ← OPTIONAL (this is default)
+      pipeline_branch: 'bugfix/stable-v1.0-fixes'    # ← ADD THIS
+
     secrets:
       AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
       AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
