@@ -1,0 +1,64 @@
+{
+  "runs": [
+    {
+      "timestamp": "2026-02-18T11:30:23.161171Z",
+      "files_generated": [
+        "test_unit_auditlog_01.py",
+        "test_integ_get_audit_logs_01.py",
+        "test_integ_get_audit_logs_02.py",
+        "test_e2e_get_audit_logs_01.py"
+      ],
+      "file_count": 4,
+      "change_summary": {
+        "added_or_modified": 0,
+        "deleted": 0,
+        "total_analyzed": 0,
+        "coverage_target": "Maximum",
+        "detected_framework": "fastapi",
+        "project_structure": [
+          "audit.py",
+          "main.py"
+        ]
+      },
+      "generation_metadata": {
+        "total_size_bytes": 28918,
+        "average_file_size": 7229,
+        "test_function_count": 49
+      }
+    },
+    {
+      "timestamp": "2026-02-18T11:31:14.015402Z",
+      "files_generated": [
+        "test_integ_root_01.py",
+        "test_e2e_root_01.py"
+      ],
+      "file_count": 2,
+      "change_summary": {
+        "added_or_modified": 0,
+        "deleted": 0,
+        "total_analyzed": 0,
+        "coverage_target": "Maximum",
+        "detected_framework": "fastapi",
+        "project_structure": [
+          "audit.py",
+          "main.py"
+        ]
+      },
+      "generation_metadata": {
+        "total_size_bytes": 14748,
+        "average_file_size": 7374,
+        "test_function_count": 22
+      }
+    }
+  ],
+  "statistics": {
+    "total_runs": 2,
+    "total_files_generated": 6,
+    "last_generation": "2026-02-18T11:31:14.015402Z",
+    "generation_summary": {
+      "unit_tests": 0,
+      "integration_tests": 1,
+      "e2e_tests": 1
+    }
+  }
+}
