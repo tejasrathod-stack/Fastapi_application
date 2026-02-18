@@ -1,27 +1,74 @@
 name: AI Test Generation
+
 on:
   workflow_dispatch:
+    inputs:
+      min_coverage:
+        description: 'Minimum coverage threshold (%)'
+        required: false
+        default: '90'
+        type: string
+      auto_push_tests:
+        description: 'Auto-push generated tests to a dedicated branch'
+        required: false
+        default: 'true'
+        type: string
+      tests_branch:
+        description: 'Branch name for generated tests'
+        required: false
+        default: 'ai-generated-tests'
+        type: string
+      pipeline_branch:
+        description: 'Pipeline repository branch to use'
+        required: false
+        default: 'bugfix/stable-v1.0-fixes'
+        type: string
+      python_version:
+        description: 'Python version to use'
+        required: false
+        default: '3.11'
+        type: string
+      generation_timeout:
+        description: 'Timeout for test generation in seconds'
+        required: false
+        default: '900'
+        type: string
+      openai_timeout:
+        description: 'Timeout for OpenAI API calls in seconds'
+        required: false
+        default: '180'
+        type: string
+      azure_openai_api_version:
+        description: 'Azure OpenAI API version'
+        required: false
+        default: '2024-12-01-preview'
+        type: string
+      artifact_retention_days:
+        description: 'Days to retain pipeline artifacts'
+        required: false
+        default: '7'
+        type: string
+
+permissions:
+  contents: write
+  pages: write
+  pull-requests: write
+  id-token: write
 
 jobs:
   run-tests:
     uses: tejasrathod-stack/improved-testgen/.github/workflows/ai-test-pipeline-v2.yml@bugfix/stable-v1.0-fixes
-
-
-
-
-    permissions:
-      contents: write        # Required for pushing to branch
-      pages: write
-      id-token: write
-      pull-requests: write
     with:
-      min_coverage: '90'
-      auto_push_tests: 'true'                    # ← ADD THIS
-      tests_branch: 'ai-generated-tests'         # ← OPTIONAL (this is default)
-      pipeline_branch: 'bugfix/stable-v1.0-fixes'    # ← ADD THIS
-
+      min_coverage: ${{ inputs.min_coverage }}
+      auto_push_tests: ${{ inputs.auto_push_tests }}
+      tests_branch: ${{ inputs.tests_branch }}
+      pipeline_branch: ${{ inputs.pipeline_branch }}
+      python_version: ${{ inputs.python_version }}
+      generation_timeout: ${{ inputs.generation_timeout }}
+      openai_timeout: ${{ inputs.openai_timeout }}
+      azure_openai_api_version: ${{ inputs.azure_openai_api_version }}
+      artifact_retention_days: ${{ inputs.artifact_retention_days }}
     secrets:
       AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
       AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
       AZURE_OPENAI_DEPLOYMENT: ${{ secrets.AZURE_OPENAI_DEPLOYMENT }}
-      # GIT_PUSH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # ← Uses GITHUB_TOKEN by default
