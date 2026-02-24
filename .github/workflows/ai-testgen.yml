@@ -48,6 +48,16 @@ on:
         required: false
         default: '7'
         type: string
+      bug_validation:
+        description: 'Bug validation mode (seeded or off)'
+        required: false
+        default: 'seeded'
+        type: string
+      min_kill_rate:
+        description: 'Minimum mutation kill rate threshold (0.0-1.0)'
+        required: false
+        default: '0.30'
+        type: string
 
 permissions:
   contents: write
@@ -68,6 +78,8 @@ jobs:
       openai_timeout: ${{ inputs.openai_timeout }}
       azure_openai_api_version: ${{ inputs.azure_openai_api_version }}
       artifact_retention_days: ${{ inputs.artifact_retention_days }}
+      bug_validation: ${{ inputs.bug_validation }}
+      min_kill_rate: ${{ inputs.min_kill_rate }}
     secrets:
       AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
       AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
